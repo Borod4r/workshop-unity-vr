@@ -2,10 +2,11 @@
 
 namespace Borodar.WorkshopVR
 {
-    public class Collectible : MonoBehaviour
+    public class Crystal : MonoBehaviour
     {
         public void OnTriggerEnter(Collider other)
         {
+            GameManager.Instance.CollectCrystal();
             Destroy(this.gameObject);
         }
     }
