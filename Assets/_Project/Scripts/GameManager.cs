@@ -20,6 +20,20 @@ namespace Borodar.WorkshopVR
 
         [SerializeField] private Image[] _crystalImages;
 
+        [Space(10)]
+
+        [SerializeField]
+        private RectTransform _finalText;
+
+        //---------------------------------------------------------------------
+        // Properties
+        //---------------------------------------------------------------------
+
+        public bool AllCrystallsCollected
+        {
+            get; private set;
+        }
+
         //---------------------------------------------------------------------
         // Public
         //---------------------------------------------------------------------
@@ -33,6 +47,12 @@ namespace Borodar.WorkshopVR
             {
                 var image = _crystalImages[i];
                 image.sprite = (_crystalImages.Length - i) > _crystalsLeft ? _crystalIcon : _crystalIconDisabled;
+            }
+
+            if (_crystalsLeft <= 0)
+            {
+                _finalText.gameObject.SetActive(true);
+                AllCrystallsCollected = true;
             }
         }
     }

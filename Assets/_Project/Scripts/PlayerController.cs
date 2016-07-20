@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Borodar.WorkshopVR
 {
@@ -21,7 +22,11 @@ namespace Borodar.WorkshopVR
 
         protected void Update()
         {
-            if (GvrViewer.Instance.Triggered) _isWalking = !_isWalking;
+            if (GvrViewer.Instance.Triggered)
+            {
+                if (GameManager.Instance.AllCrystallsCollected) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                _isWalking = !_isWalking;
+            }
 
             var headDirection = GvrViewer.Controller.Head.transform.forward;
             var motion = (_isWalking) ? new Vector3(headDirection.x, 0, headDirection.z) * _speed * Time.deltaTime : Vector3.zero;
