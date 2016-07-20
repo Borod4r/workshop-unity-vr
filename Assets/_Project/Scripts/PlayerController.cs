@@ -14,12 +14,12 @@ namespace Borodar.WorkshopVR
         // Messages
         //---------------------------------------------------------------------
 
-        public void Awake()
+        protected void Awake()
         {
             _controller = GetComponent<CharacterController>();
         }
 
-        public void Update()
+        protected void Update()
         {
             if (GvrViewer.Instance.Triggered) _isWalking = !_isWalking;
 
